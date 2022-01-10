@@ -1,257 +1,565 @@
 @font-face {
-	font-family: 'Bebas Neue';
-	src: local('Bebas Neue Regular Regular'), local('BebasNeueRegular'),
-		 url('../fonts/BebasNeueRegular.woff2') format('woff2'),
-		 url('../fonts/BebasNeueRegular.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
-	font-display: swap;
+  font-family: "Bebas Neue";
+  src: local("Bebas Neue Regular Regular"), local("BebasNeueRegular"),
+    url("../fonts/BebasNeueRegular.woff2") format("woff2"),
+    url("../fonts/BebasNeueRegular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-*{
-	box-sizing: border-box;
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+.header {
+  background-color: #635854;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-bottom: 4px solid #3596f5;
+}
+.contanier {
+  max-width: 1220px;
+  margin: 0 auto;
 }
 
-body{
-	font-family: 'Roboto', sans-serif;
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.nav-bar-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  text-align: center;
+}
+.navbar-item {
+  margin-left: 40px;
+  margin-right: 40px;
+  font-size: 16px;
+  max-width: 95px;
 }
 
-.header{
-	background-color: #635854;
-	padding-top: 12px; /*задаем внутренний отступ шапки*/
-	padding-bottom: 12px; /*нижний отступ шапки*/
-	border-bottom: 4px solid #3596f5; /*устанавливаем нижнию полосу на шапке*/
+.navbar-link {
+  text-decoration: none;
+  color: #fff;
+}
+.navbar-link:hover {
+  color: #3596f5;
+}
+.navbar-contacts {
+  text-align: right;
+}
+.navbar-text {
+  display: block;
+  color: #fff;
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 16px;
+}
+.navbar-phone {
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none;
+  color: #fff;
+}
+.navbar-phone:hover {
+  color: #3596f5;
+}
+.main {
+  padding-top: 54px;
+  display: flex;
+  padding-bottom: 100px;
+}
+.main-info {
+  flex-grow: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.home-image path {
+  opacity: 0;
+  cursor: pointer;
+}
+.home-image path:hover {
+  opacity: 1;
+}
+path.current-floor {
+  opacity: 1;
+}
+.counter-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.counter-button {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.counter-arrow-down {
+  transform: rotateX(180deg);
+}
+.main-title {
+  margin: 0;
+  margin-top: 65px;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: normal;
+  font-size: 37px;
+  line-height: 37px;
+  color: #635854;
+}
+.floor-counter {
+  font-family: "Bebas Neue", sans-serif;
+  color: #635854;
+  font-size: 130px;
+  margin-top: 10px;
+}
+.button-primary {
+  background: #3596f5;
+  border-radius: 6px;
+  color: #fff;
+  border: none;
+  padding: 16px 36px;
+  cursor: pointer;
+  margin-bottom: 60px;
+  font-size: 16px;
+  line-height: 19px;
+}
+.button-primary:hover {
+  box-shadow: 4px 4px 4px rgba(99, 88, 84, 0.5);
+  background-color: #1e7cda;
+}
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: scale(0); /*на сайте не будет видно, сожмется в 0*/
+  transition: opacity 0.2s;
+}
+.is-open {
+  opacity: 1;
+  transform: scale(1);
+}
+.modal-dialog {
+  position: relative;
+  max-width: 1000px;
+  min-height: 565px;
+  background-color: #fff;
+  flex-grow: 1;
+  display: flex;
+  opacity: 0;
+  transform: translateY(-10%);
+  transition: transform 0.2s, opacity 0.2s;
+  transition-delay: 0.2s;
+}
+.is-open > .modal-dialog {
+  opacity: 1;
+  transform: translateY(0);
+}
+.modal-image {
+  background-color: #ebebeb;
+  width: 60%;
+  text-align: center;
+  padding: 50px;
+}
+.flats path {
+  opacity: 0;
+  cursor: pointer;
+}
+.flats path:hover {
+  opacity: 1;
+}
+.flats path.current-list-elem {
+  opacity: 1;
+}
+.modal-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 29px;
+  margin-top: 0;
+  margin-bottom: 25px;
+}
+.modal-info {
+  width: 40%;
+  padding: 50px 46px;
+}
+.flat-list {
+  padding: 0;
+  list-style: none;
+  margin-top: 55px;
+}
+.flat-item {
+  margin-bottom: 10px;
+}
+.flat-item.current-flat .flat-link {
+  color: #3596f5;
+  text-decoration-line: underline;
+}
+.flat-link {
+  color: #635854;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: none;
+}
+.flat-link:hover {
+  color: #3596f5;
+  text-decoration-line: underline;
+}
+.modal-alert {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #635854;
+  margin-top: 50px;
+}
+.modal-close-button {
+  position: absolute;
+  right: 27px;
+  top: 38px;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+}
+.footer {
+  background-color: #d7d7d7;
+  border-top: 4px solid #3596f5;
+}
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0 60px 0;
+}
+.footer-contact {
+  display: flex;
+  align-items: center;
+}
+.footer-logo {
+  margin-right: 37px;
+}
+.footer-phone {
+  color: #635854;
+  margin-right: 60px;
+}
+.footer-phone-text {
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 0 5px 0;
+}
+.footer-phone-number {
+  text-decoration: none;
+  color: #635854;
+  font-weight: bold;
+  font-size: 17px;
+  line-height: 20px;
+  cursor: pointer;
+}
+.footer-phone-number:hover {
+  color: #3596f5;
+}
+.footer-link {
+  cursor: pointer;
+  margin-right: 15px;
+}
+.footer-info {
+  display: flex;
+  align-items: center;
+}
+.footer-info-text {
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration-line: underline;
+  color: #635854;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.footer-info-text:hover {
+  color: #3596f5;
 }
 
-.navbar{
-	max-width: 1280px;
-	margin: auto;
-	display: flex; /*сделали блок гибким*/
-   justify-content: space-between; /*раставили элементы по краям*/
-   align-items: center; 
+/*Responsive*/
+
+/* 992 - 1220 */
+@media screen and (max-width: 1220px) {
+  .contanier {
+    width: 960px;
+  }
+
+  .main-image {
+    max-width: 65%;
+  }
+  .home-image {
+    width: 100%;
+    height: auto;
+  }
+  .navbar-logo {
+    width: 80%;
+  }
+  .navbar-item {
+    margin-left: 25px;
+    margin-right: 25px;
+  }
+  .main-info {
+    padding: 0 10px;
+  }
+  .main-title {
+    font-size: 28px;
+  }
 }
 
-.navbar-menu{
-	margin: 0; /*отключение отступов внешних*/
-	padding: 0; /*отключение внутренних отступов*/
-	list-style: none; /*отключение маркеров-точек у списка*/
-	display: flex;
-	text-align: center;
+/* 769 - 991 */
+@media screen and (max-width: 992px) {
+  .contanier {
+    width: 720px;
+  }
+  .navbar {
+    flex-direction: column;
+  }
+  .navbar-item {
+    font-size: 14px;
+    margin-left: 35px;
+    margin-right: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  .navbar-contacts {
+    text-align: center;
+  }
+  .main-title {
+    margin-top: 35px;
+  }
+  .floor-counter {
+    font-size: 70px;
+    margin-bottom: 10px;
+  }
+  .button-primary {
+    padding: 15px;
+    font-size: 14px;
+  }
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-contact {
+    margin-bottom: 30px;
+  }
+  .footer-info-text {
+    margin-right: 15px;
+  }
 }
 
-.navbar-item{
-	margin-left: 40px; /*устанавливаем левый отступ в списке меню*/
-	margin-right: 40px; /*устанавливаем правый отступ в списке меню*/
+/* 576 - 768 */
+@media screen and (max-width: 768px) {
+  .contanier {
+    width: 540px;
+  }
+  .navbar-item {
+    margin: 20px;
+  }
+  .navbar-link {
+    font-size: 12px;
+  }
+  .navbar-phone {
+    font-size: 15px;
+  }
+  .main-image {
+    max-width: 60%;
+  }
+  .main-title {
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  .floor-counter {
+    font-size: 55px;
+  }
+  .counter-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  .button-primary {
+    padding: 10px;
+    font-size: 12px;
+    margin-bottom: 15px;
+  }
+  .main {
+    padding-bottom: 50px;
+  }
+  .footer-info-text {
+    font-size: 14px;
+  }
+  .modal-dialog {
+    max-width: 100%;
+  }
+  .modal-close-button {
+    right: 15px;
+    top: 20px;
+  }
+  .modal-close-button svg {
+    width: 20px;
+  }
+  .modal-image {
+    padding: 20px;
+  }
+  .modal-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .flats {
+    width: 100%;
+    height: 340px;
+  }
+  .modal-info {
+    padding: 20px 15px;
+  }
+  .modal-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .flat-link {
+    font-size: 14px;
+  }
+  .flat-list {
+    margin-top: 30px;
+  }
+  .modal-alert {
+    font-size: 12px;
+    margin-top: 35px;
+  }
 }
 
-.navbar-link{
-	text-decoration: none; /*убираем подчеркивание в списке*/
-	color: #fff;
-}
-
-.navbar-text{
-	display: block; /*растягиваем на всю длину блока*/
-	color: #fff;
-	margin-bottom: 4px; /*устанавливаем расстояние от надписи до номера телефона*/
-	font-size: 14px;
-	line-height: 16px;
-
-}
-.navbar-contacts{
-	text-align: right; /*выравниваем по правому краю*/
-}
-
-.navbar-phone{
-	font-weight: 700;
-	font-size: 17px;
-	line-height: 20px;
-	text-decoration: none;
-	color: #FFFFFF;
-
-}
-
-.main{
-	max-width: 1280px;
-	margin: auto;
-	padding-top: 54px;
-	display: flex;
-}
-
-.main-info{
-	flex-grow: 1; /*растягивание на всю ширину блока*/
-	text-align: center; /*выравнивание по центру*/
-	display: flex; /*растягивание по всему блоку*/
-	flex-direction: column; /*выравнивание относитьльно вертикали*/
-	align-items: center;
-	justify-content: space-between;/*разбрасывание элементов по краям блока*/
-}
-
-.main-title{
-	margin: 0;
-	font-family: Bebas Neue, sans-serif;
-	font-weight: normal;
-	font-size: 37px;
-	line-height: 44px;
-	color: #635854;
-}
-
-.home-image path{ /*прозрачность*/
-	opacity: 0;
-	cursor: pointer; /*замена курсора на палец*/
-}
-
-.home-image path:hover{/*заливка предмета при наведении на него*/
-	opacity: 1;
-}
-
-path.current-floor{
-	opacity: 1;
-}
-
-.counter-group{
-	display: flex; /*растягивание по всему блоку*/
-	flex-direction: column; /*выравнивание по высоте*/
-	align-items: center; /*выравнивание по центру*/
-}
-
-.counter-button{
-	background-color: #fff;
-	border: none;
-	cursor: pointer;
-}
-
-.counter-arrow-down{
-	transform: rotateX(180deg);
-}
-
-.counter{
-	font-family: Bebas Neue, sans-serif;
-	color: #635854;
-	font-size: 124px;
-	margin-top: 5px;
-}
-
-.button-primary{
-	background-color: #3596F5;
-	border-radius: 6px;
-	color: #fff;
-	border: none;
-	padding: 16px 36px;
-	cursor: pointer;
-}
-
-.modal{ /*всплывающее окошко поверх всего*/
-	position: fixed; /*фиксированная позиция, поверхвсего сайта*/
-	left: 0;  /*крепим к левому краю*/
-	top: 0; /*крепим к верхнему краю*/
-	width: 100%; /*размер всплывающего окна, ширина*/
-	height: 100%;  /*размер всплывающего окна, высота*/
-	background-color: rgba(0, 0, 0, 0.8); /*полупрозрачный черный цвет для всплывающего окна*/
-	display: flex;  /*гибкий родительский элемент*/
-	justify-content: center;
-	align-items: center;
-	opacity: 0;
-	transform: scale(0);
-	transition: opacity 0.2s;
-}
-
-.is-open{
-	opacity: 1;
-	transform: scale(1);
-}
-
-.modal-dialog{ /*диалоговое окно*/
-	position: relative;
-	max-width: 1000px; /*размер всплывающего окна, ширина*/
-	min-height: 565px; /*размер всплывающего окна, высота*/
-	background-color: #fff; /*фоновый цвет*/
-	flex-grow: 1;
-	display: flex;
-	opacity: 0;
-	transform: translateY(-10%);
-	transition: transform 0.2s, opacity 0.2s;
-	transition-delay: 0.2s;
-}
-
-.flats path{
-	opacity: 0;
-	cursor: pointer;
-}
-
-.flats path:hover{
-	opacity: 1;
-}
-
-.is-open > .modal-dialog{
-	opacity: 1;
-	transform: translateY(0);
-}
-
-.modal-image{ /*серое окошко на страничке*/
-	width: 60%; /* размер серого окошка*/
-	background: #EBEBEB;
-	text-align: center; /*весь текст по центру*/
-	padding: 50px; /*равномерные отступы по краямдо картинки с этажом*/
-}
-
-.modal-counter{
-	font-family: "Bebas Neue", sans-serif;
-	font-weight: normal;
-	font-size: 24px;
-	color: #000000;
-}
-.modal-title{
-	font-family: "Bebas Neue", sans-serif;
-	font-weight: normal;
-	font-size: 24px;
-	line-height: 29px;
-	color: #000000;
-	margin-top: 0;
-	margin-bottom: 25px;
-}
-
-.modal-info{
-	width: 40%; /*ширина окна вырбрать квартиру*/
-	padding: 50px 46px; /*отступы сбоку по 46, сверху, снизу 50*/
-}
-
-.flat-list{
-	margin-top: 55px;
-	padding: 0; /*убираем отступ слева*/
-	list-style: none; /*отключение маркировки списка*/
-}
-
-.flat-item{
-	margin-bottom: 10px;  /*межстрочный интервал между ссылками квартир*/
-}
-
-.flat-link{
-	font-size: 16px;
-	line-height: 19px;
-	color: #635854;
-	text-decoration: none;
-}
-
-.flat-link:hover{
-	text-decoration-line: underline;  /*выделение подчеркиванием квартиры при наведении на нее*/
-	color: #3596F5; /*выделение цветом квартиры при наведении на нее*/
-}
-
-.modal-alert{
-	margin-top: 56px; /*отступ сверху*/
-	font-style: italic;
-	font-weight: normal;
-	font-size: 16px;
-	line-height: 19px;
-	color: #635854;
-}
-
-.modal-close-button{
-	position: absolute;   /*позиционорование кнопки*/
-	right: 27px;   /*закрепление кнопки к правой стороне*/
-	top: 38px;   /*закрепление кнопки к верху*/
-	border: none;   /*убираем обводку кнопки*/
-	background-color: #fff;   /*фон кнопки*/
-	cursor: pointer;
-	
+/* 0 - 575 */
+@media screen and (max-width: 576px) {
+  .contanier {
+    width: 90%;
+  }
+  .navbar-nav {
+    width: 100%;
+  }
+  .nav-bar-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+  .navbar-item {
+    max-width: 200px;
+    margin: 0;
+    padding: 10px 0;
+  }
+  .navbar-contacts {
+    margin-top: 20px;
+  }
+  .navbar-text {
+    font-size: 12px;
+  }
+  .navbar-phone {
+    font-size: 14px;
+  }
+  .main {
+    padding-top: 25px;
+    padding-bottom: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .main-image {
+    max-width: 75%;
+  }
+  .navbar-logo {
+    width: 80px;
+  }
+  .main-title {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+  .counter-arrow {
+    width: 32px;
+    padding: 5px;
+  }
+  .floor-counter {
+    font-size: 40px;
+  }
+  .footer-content {
+    padding: 20px 0 30px 0;
+  }
+  .footer-phone {
+    margin-right: 5px;
+    width: 120px;
+  }
+  .footer-phone-text {
+    font-size: 12px;
+  }
+  .footer-phone-number {
+    font-size: 12px;
+  }
+  .footer-logo {
+    margin-right: 10px;
+    width: 35px;
+  }
+  .footer-link {
+    margin-right: 5px;
+    padding: 5px;
+  }
+  .footer-info {
+    flex-direction: column;
+  }
+  .footer-info-text {
+    font-size: 12px;
+    padding-top: 10px;
+  }
+  .modal-dialog {
+    flex-direction: column;
+    align-items: center;
+  }
+  .modal-title {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .modal-image {
+    width: 100%;
+    padding: 7px;
+  }
+  .modal-info {
+    width: 100%;
+    text-align: center;
+  }
+  .flats {
+    height: 200px;
+  }
+  .modal-info {
+    padding: 7px 15px;
+  }
+  .modal-close-button svg {
+    width: 15px;
+  }
+  .modal-close-button {
+    background-color: rgba(0, 0, 0, 0);
+    right: 10px;
+    top: 10px;
+  }
+  .flat-list {
+    margin-top: 10px;
+  }
+  .flat-item {
+    margin-bottom: 0;
+    padding-bottom: 5px;
+  }
+  .modal-alert {
+    font-size: 11px;
+    margin-top: 20px;
+  }
 }
